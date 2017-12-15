@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+   <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <title>Userlog</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 750px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color:darkslategray;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+	.topcorner {
+    position:absolute;
+    right:40px;
+	top:5px;
+    width:20%;
+	height:25%;
+    padding: 10px;
+}
+.top{
+    position: absolute;
+    left:30px;
+    top:5px;
+    width:20%;
+	height:25%;
+}
+  </style>
+</head>
+<body>
+
+
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+    <img src="http://www.mutualfundpatna.com/images/logo.jpg" width="330px;" height="70px" >
+        
+      <ul class="nav nav-pills nav-stacked" style="padding:10px;">
+          <li><a href="/admin/home">Pan Card Master</a></li>
+        <li class="active"><a href="/admin/userlog">User Log</a></li>
+        
+      </ul>
+      <div class="input-group">
+        <span class="input-group-btn">
+          
+        </span>
+      </div>
+    </div>
+
+    <div class="col-sm-9">
+	 <div data-role="page" id="pageone">
+  <div data-role="header">
+    <center><h1><b>USER LOG</b></h1></center>
+    </div>
+    <div class="topcorner">
+     <h4> <%=user%>
+      <a href="/admin/logout"><button>LOGOUT</button></a></h4>
+  </div>
+             
+  <table id="example">
+    <thead>
+      <tr><th>Sl_NO.</th>
+      <th>PAN NUMBER</th>
+      <th>TOTAL SEARCH</th>
+      <th>LAST SEARCH DATE</th>
+      <th>LAST SEARCH TIME</th>
+      </tr>
+    </thead>
+    <tbody>
+     <% if (fields.length) { %>
+    <% fields.forEach(function(rs){ %>
+    <tr>
+        <td><%=rs.ID%></td>
+        <td><%=rs.Pan_NO%></td>
+        <td><%=rs.count%> times</td>
+        <td><%=rs.last_search_date%></td>
+        <td><%=rs.last_search_time%></td>
+        </tr>
+    <% }) %>
+<% } %>
+
+</tbody>
+  </table>
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+  <script>
+    
+  $(function(){
+    $("#example").dataTable();
+  })
+  </script>
+
+</div> 
+
+</div>
+
+      </div>
+      
+      
+<footer style="background-color:black;">
+  <center><p>Developed By @<a href="/admin/sugoi">Sugoi Labs</a></p><center>
+</footer>
+
+</body>
+</html>
